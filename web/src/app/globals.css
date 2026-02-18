@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --bg: 14 16 18;
+  --fg: 242 244 247;
+  --muted: 154 164 178;
+
+  --card: 18 20 24;
+  --card2: 23 26 32;
+
+  --accent: 255 72 176; /* magenta */
+  --accent2: 72 215 255; /* cyan */
+
+  --ring: 255 72 176;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--fg));
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(255, 72, 176, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(72, 215, 255, 0.14), transparent 55%),
+    radial-gradient(1100px 700px at 60% 90%, rgba(255, 180, 72, 0.10), transparent 60%),
+    rgb(var(--bg));
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: rgba(var(--accent), 0.35);
+}
+
+@layer components {
+  .cc-card {
+    @apply rounded-2xl border border-white/10;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    box-shadow:
+      0 12px 40px rgba(0,0,0,0.45);
+  }
+
+  .cc-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80;
+  }
+
+  .cc-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition;
+  }
+
+  .cc-btn-primary {
+    background:
+      linear-gradient(135deg, rgba(var(--accent), 1), rgba(var(--accent2), 1));
+    @apply text-black shadow-[0_12px_40px_rgba(255,72,176,0.20)];
+  }
+
+  .cc-btn-primary:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+
+  .cc-btn-ghost {
+    @apply border border-white/12 bg-white/5 text-white/90 hover:bg-white/10;
+  }
+
+  .cc-h1 {
+    font-family: var(--font-display);
+    @apply text-4xl sm:text-5xl font-black tracking-tight;
+  }
+
+  .cc-h2 {
+    font-family: var(--font-display);
+    @apply text-2xl font-extrabold tracking-tight;
+  }
+
+  .cc-kpi {
+    @apply rounded-2xl border border-white/10 p-5;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    box-shadow:
+      0 12px 40px rgba(0,0,0,0.45);
+  }
+
+  .cc-kpi-label {
+    @apply text-xs uppercase tracking-[0.18em] text-white/60;
+  }
+
+  .cc-kpi-value {
+    font-family: var(--font-display);
+    @apply mt-2 text-3xl font-black;
+  }
+}
