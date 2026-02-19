@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { createSupabaseServerClient } from '@/lib/supabase/server'
+import { createSupabaseAdminClient } from '@/lib/supabase/admin'
 
 const FoodItem = z.object({
   name: z.string(),
@@ -43,9 +43,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'unauthorized' }, { status: 401 })
   }
 
-  // Use service role on the server in prod; for now we rely on RLS-friendly inserts later.
-  // In Supabase, this endpoint should use SUPABASE_SERVICE_ROLE_KEY (server only) to bypass RLS.
-  const supabase = await createSupabaseServerClient()
+  // Use SUPABASE_SERVICE_ROLE_KEY (server-only) so ingest can insert without a user session.
+  const supabase = createSupabaseAdminClient()
 
   // Find the user profile linked to this telegram user id.
   const { data: profile } = await supabase
