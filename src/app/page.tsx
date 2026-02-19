@@ -12,7 +12,6 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="cc-chip">Real-time Telegram sync</span>
               <span className="cc-chip">Per-person targets</span>
-              <span className="cc-chip">PST day grouping</span>
             </div>
 
             <h1 className="cc-h1 mt-6">

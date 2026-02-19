@@ -46,7 +46,7 @@ export default async function TodayDashboard() {
           <div className="flex gap-3">
             <Link className="cc-btn cc-btn-ghost" href="/settings">Settings</Link>
             <form action="/auth/signout" method="post">
-              <button className="cc-btn cc-btn-primary" type="submit">Sign out</button>
+              <button className="cc-btn cc-btn-primary text-white" type="submit">Sign out</button>
             </form>
           </div>
         </header>
